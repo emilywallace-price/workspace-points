@@ -1,0 +1,78 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card {
+  height: 6rem;
+  width: 4rem;
+  background-color: #07233f;
+  border-radius: 0.2rem;
+  border: 3px solid #f16a5d;
+  color: #f16a5d;
+  font-size: xx-large;
+  margin-right: 1rem;
+}
+
+h2 {
+  margin: 2rem 0;
+  text-align: center;
+  color: white;
+}
+
+li {
+  color: #f16a5d;
+  list-style: none;
+}
+span {
+  font-weight: bold;
+  font-size: large;
+}
+.reset {
+  height: 3rem;
+  width: 7rem;
+  background-color: #07233f;
+  border-radius: 0.2rem;
+  border: 3px solid #f16a5d;
+  color: #f16a5d;
+  font-size: x-large;
+  margin: 2rem 1rem;
+}
+
+@media (hover: hover) {
+  button:hover {
+    background-color: ghostwhite;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+  header {
+    display: grid;
+    place-items: center;
+    padding-right: calc(var(--section-gap) / 2);
+  }
+
+  .logo {
+    margin: 0 3rem;
+  }
+}
