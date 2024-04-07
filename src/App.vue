@@ -1,6 +1,9 @@
 <script>
 import Votes from './components/Votes.vue'
 import VotingResults from './components/VotingResults.vue'
+import { db } from "@/firebase/init.js";
+import { collection, addDoc } from 'firebase/firestore'
+
 export default {
     name: 'App',
     components: {
@@ -10,19 +13,23 @@ export default {
     data() {
         return {
             options: [1, 2, 3, 5, 8],
-            results: {
-                1: 0,
-                2: 0,
-                3: 0,
-                5: 0,
-                8: 0
-            }
         };
     },
     methods: {
-        handleVote(option) {
-            this.results[option]++;
-        }
+        async handleVote(option) {
+            try {
+                const colRef = collection(db, 'votes');
+
+                const dataObj = {
+                    vote: option
+                };
+
+                const docRef = await addDoc(colRef, dataObj);
+
+            } catch (error) {
+                console.error('Error adding vote: ', error);
+            }
+        },
     }
 }
 </script>
@@ -38,7 +45,7 @@ export default {
         <div>
             <Votes :options="options" @vote="handleVote" />
         </div>
-        <VotingResults :results="results" />
+        <VotingResults />
     </main>
 </template>
 
